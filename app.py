@@ -7,6 +7,11 @@ from flask import url_for
 
 app = Flask(__name__)
 
+
+
+"""
+Orders stored in data structures
+"""
 orders = [
 	{
 		'id': 1,
@@ -35,12 +40,26 @@ orders = [
 ]
 
 
+
+def make_public_order(order):
+    new_order = {}
+    for food in order:
+        if food == 'id':
+            new_order['uri'] = url_for('get_order', order_id = order['id'], _external = True)
+        else:
+            new_order[food] = order[food]
+    return new_order
+
+
+
+"""REST Endpoints for Resources (CRUD)"""
+
 """
 The GET method used to return the data of all the orders
 """
 @app.route('/food/api/v1/orders', methods=['GET'])
 def get_orders():
-	return jsonify({'orders': orders})
+	return jsonify({'orders': [make_public_order(order) for order in orders]})
 
 
 """
@@ -48,19 +67,11 @@ The GET method used to return the data of a single order
 """
 @app.route('/food/api/v1/orders/<int:order_id>', methods=['GET'])
 def get_order(order_id):
-    order = [order for order in orders if order['id'] == order_id]
+    order = filter(lambda o: o['id'] == order_id, orders)
     if len(order) == 0:
         abort(404)
-    return jsonify({'order': order[0]})
+    return jsonify({'order': make_publice_order(order[0])})
 	
-
-"""
-Improve the 404 error handler so that we get a much more API friendly error response
-"""
-@app.errorhandler(404)
-def not_found(error):
-    return make_response(jsonify({'error': 'Not found'}), 404)
-
 
 """
 The POST method, which we will use to place a new order
@@ -84,7 +95,7 @@ The PUT method, which we will use to update the status of an order
 """
 @app.route('/food/api/v1/orders/<int:order_id>', methods=['PUT'])
 def update_order(order_id):
-    order = [order for order in orders if order['id'] == order_id]
+    order = filter(lambda o: o['id'] == order_id, orders)
     if len(order) == 0:
         abort(404)
     if not request.json:
@@ -98,7 +109,7 @@ def update_order(order_id):
     order[0]['title'] = request.json.get('title', order[0]['title'])
     order[0]['description'] = request.json.get('description', order[0]['description'])
     order[0]['done'] = request.json.get('done', order[0]['done'])
-    return jsonify({'order': order[0]})
+    return jsonify({'order': make_public_order(order[0])})
 
 
 """
@@ -106,7 +117,7 @@ The DELETE method, which we will use to delete an order
 """
 @app.route('/food/api/v1/orders/<int:order_id>', methods=['DELETE'])
 def delete_order(order_id):
-    order = [order for order in orders if order['id'] == order_id]
+    order = filter(lambda o: o['id'] == order_id, orders)
     if len(order) == 0:
         abort(404)
     orders.remove(order[0])
@@ -114,5 +125,5 @@ def delete_order(order_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug = True)
 	
