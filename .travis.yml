@@ -1,5 +1,22 @@
 language: python
-python: "3.6.5"
-cache: pip
-install: pip install -r requirements.txt
-script: python test_app.py
+
+python:
+  - "3.6-dev"
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - pytest --cov-config .coveragerc tests.py --pep8 test_app.py --cov-report term-missing
+
+after_script:
+  - coverage xml
+  - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_PYTHON_VERSION" == "3.6-dev" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+
+after_success:
+  - coveralls
