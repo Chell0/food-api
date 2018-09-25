@@ -48,14 +48,13 @@ def make_public_order(order):
 
 """REST Endpoints for Resources (CRUD)"""
 
+
 """
 The GET method used to return the data of all the orders
 """
-
-
 @app.route('/food/api/v1/orders', methods=['GET'])
 def get_orders():
-    return jsonify({'orders': [make_public_order(order) for order in orders]})
+        return jsonify({'orders': orders})
 
 
 """
@@ -68,7 +67,7 @@ def get_order(order_id):
     order = filter(lambda o: o['id'] == order_id, orders)
     if len(order) == 0:
         abort(404)
-    return jsonify({'order': make_public_order(order[0])})
+    return jsonify({'order': order[0]})
 
 
 """
@@ -80,12 +79,11 @@ The POST method, which we will use to place a new order
 def create_order():
     if not request.json or not 'title' in request.json:
         abort(400)
-    order = {
-        'id': orders[-1]['id'] + 1,
-        'title': request.json['title'],
-        'description': request.json.get('description', ""),
-        'done': False
-    }
+    order = {}
+    data = request.get_json()
+    order['name'] = data['name']
+    order['id'] = len(orders) + 1
+
     orders.append(order)
     return jsonify({'order': order}), 201
 
