@@ -1,7 +1,8 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Resource, Api
 
 app = Flask(__name__)
+app.secret_key = 'thisismysecretkey'
 api = Api(app)
 
 orders = []
@@ -11,14 +12,20 @@ class Order(Resource):
         for order in orders:
             if order['order_id'] == order_id:
                 return order
-        return {'order': None}, 404
+        return {'order': None}, 200 if order else 404
 
     def post(self, order_id):
-        order = {'id': order_id, 'title': "Cheese Burger", 'price': 250}
+        data = request.get_json()
+        order = {'id': order_id, 'title': data['title'], 'price': data['price']}
         orders.append(order)
         return order, 201
 
 
-api.add_resource(Order, '/v1/orders/<string:order_id>')
+class OrderList(Resource):
+    def get(self):
+        return {'orders': orders}
 
-app.run(port=5000)
+api.add_resource(Order, '/v1/orders/<string:order_id>')
+api.add_resource(OrderList, '/v1/orders')
+
+app.run(port=5000, debug=True)
