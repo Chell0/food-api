@@ -1,3 +1,4 @@
+from flask import Flask
 import unittest
 import os
 import json
@@ -14,7 +15,7 @@ class FoodTestCase(unittest.TestCase):
 
 
     def test_order_creation(self):
-        create = self.client.post('/orders/', data=self.order)
+        self.client.post('/food/api/v1/orders/', data=self.order)
         self.assertEqual(request.status_code, 201)
         self.assertIn('Chicken Burger', str(request.data))
 
