@@ -1,4 +1,4 @@
-language: python
+Language: python
 
 python:
   - "3.7"
@@ -7,7 +7,9 @@ before_install :
   - pip install requirements.txt
   - pip install --user codecov
 
+script: python test_app.py
 
 after_success:
   - coveralls
   - CODECOV_TOKEN="81285440-a3ba-4193-8690-ac91298b2fb5"
+
