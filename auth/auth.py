@@ -1,27 +1,16 @@
+from werkzeug.security import safe_str_cmp
+from user import Users
+
 users = [
-    {
-        'id': 1,
-        'username': 'admin',
-        'password': 'admin'
-    }
+    Users(1, 'admin', 'admin')    
 ]
 
 """Find a user using the username"""
-username_mapping = {'admin': {
-        'id': 1,
-        'username': 'admin',
-        'password': 'admin'
-   }
-}
+username_mapping = {us.username: us for us in users}
 
 """Find a user using the id"""
 
-userid_mapping = { 1: {
-        'id': 1,
-        'username': 'admin',
-        'password': 'admin'
-    }
-}
+userid_mapping = {us.id: us for us in users}
 
 
 """Authenticate a user"""
@@ -31,6 +20,6 @@ def auth(username, password):
         return user
 
 """using the payload"""
-def id(payload):
-    user_id = payload['id']
+def identity(payload):
+    user_id = payload['identity']
     return userid_mapping.get(user_id, None)
