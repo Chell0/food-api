@@ -5,11 +5,11 @@ app = Flask(__name__)
 api = Api(app)
 
 
-class Order(Resource):
+class Orders(Resource):
     def get(self, order_id):
-        return {'order': order_id}
+        return {'orders': order_id}
 
 
-api.add_resource(Order, '/v1/order/<string:order_id>')
+api.add_resource(Order, '/v1/orders/<string:order_id>')
 
 app.run(port=5000)
