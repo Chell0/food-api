@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 language: python
+=======
+Language: python
+>>>>>>> ft-user-authentication-#160801485
 
 python:
   - "3.7"
@@ -17,10 +21,18 @@ before_script:
 script:
   - pytest --cov-config .coveragerc test_app.py --pep8 test_app.py --cov-report term-missing
 
+<<<<<<< HEAD
 after_script:
   - coverage xml
   - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_PYTHON_VERSION" == "3.7" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+=======
+script: python test_app.py
+>>>>>>> ft-user-authentication-#160801485
 
 after_success:
   - coveralls
   - CODECOV_TOKEN="81285440-a3ba-4193-8690-ac91298b2fb5"
+<<<<<<< HEAD
+=======
+
+>>>>>>> ft-user-authentication-#160801485

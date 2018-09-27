@@ -1,44 +1,26 @@
-from flask import Flask
 import unittest
-import os
-import json
+import requests
 
+import responses
 
-class FoodTestCase(unittest.TestCase):
+class ApiTestCase(unittest.TestCase):
     
 
+    def test_get(self):
+        responses.add(**{
+            'method' : responses.GET,
+            'url' : 'http://127.0.0.1:5000/v1/orders',
+            'body' : '{"error": "reason"}',
+            'status' : 404,
+            'content_type' : 'application/json'
+        })
 
-    def setUp(self):
-        self.app = Flask(__name__)
-        self.client = self.app.test_client
-        self.order = {'title': 'Chicken Burger'}
+        response = requests.get('http://127.0.0.1:5000/v1/orders')
 
-
-    def test_order_creation(self):
-        self.client.post('/food/api/v1/orders/', data=self.order)
-        self.assertEqual(request.status_code, 201)
-        self.assertIn('Chicken Burger', str(request.data))
+        self.assertEqual({'error': 'reason'}, response.json())
+        self.assertEqual(404, response.status_code)
 
     
-    def test_the_get_all_orders_request(self):
-        request = self.client.get('/orders/')
-        self.assertEqual(request.status_code, 200)
-        self.assertIn('Chicken Burger', str(request.data))
-
-
-    def test_api_to_get_an_order_by_id(self):
-        id = self.client.get('/orders/', data=order_id)
-        self.assertEqual(request.status_code, 200)
-        self.assertIn('Chicken Burger', str(request.data))
-
-
-    def test_if_order_can_be_updated(self):
-        update = self.client.update('/orders/', data=order_id.replace(""), result = self.client.get('/orders/{}'.format(result_in_json['id'])))
-        self.assertEqual(request.status_code, 200)
-        self.assertIn('Chicken Burger', str(request.data))
-
-
-
 
 if __name__ == '__main__':
     unittest.main()

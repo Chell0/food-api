@@ -1,3 +1,4 @@
+<<<<<<< HEAD:app/v1/app.py
 <<<<<<< HEAD:app.py
 from flask import Flask
 from flask_restful import Resource, Api
@@ -7,10 +8,15 @@ from flask import abort
 from flask import request
 from flask import url_for
 >>>>>>> ffdc630040e9ed3dc00dc86a9085b6de4bb34305:app/v1/app.py
+=======
+from flask import Flask
+from flask_restful import Resource, Api
+>>>>>>> ft-user-authentication-#160801485:app.py
 
 app = Flask(__name__)
 api = Api(app)
 
+<<<<<<< HEAD:app/v1/app.py
 <<<<<<< HEAD:app.py
 =======
 """
@@ -148,3 +154,18 @@ app.run(port=5000)
 if __name__ == '__main__':
     app.run(debug=True)
 >>>>>>> ffdc630040e9ed3dc00dc86a9085b6de4bb34305:app/v1/app.py
+=======
+Orders = []
+
+class Order(Resource):
+    def get(self, order_id):
+        return {'orders': order_id}
+
+
+api.add_resource(Order, '/v1/orders/<string:order_id>')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+>>>>>>> ft-user-authentication-#160801485:app.py

@@ -1,4 +1,12 @@
+<<<<<<< HEAD
+=======
+.vscode/
+>>>>>>> ft-user-authentication-#160801485
 venv/
 .vscode/
 *.pyc
 __pycache__/
+<<<<<<< HEAD
+=======
+
+>>>>>>> ft-user-authentication-#160801485
