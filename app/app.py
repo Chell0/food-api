@@ -2,9 +2,11 @@ from flask import Flask
 from flask import request
 from flask_restful import Resource, Api, reqparse
 from flask_jwt import JWT, jwt_required
+import os
+import sys
 
 # local import
-from auth import auth, identity
+from v1.auth import auth, identity
 
 # Our App
 app = Flask(__name__)
@@ -27,10 +29,12 @@ class Order(Resource):
     # Let us authenticate first before we go to the GET request
     @jwt_required()
     def get(self, name):
+        # Look through all orders looking from a specific order using the name requested
         order = next(filter(lambda x: x['name'] == name, orders), None)
         return {'order': order}, 200 if order else 404
 
-    @jwt_required
+    # Let us authenticate first before we go to the POST request
+    # @jwt_required
     def post(self, name):
         # Deal with the errors first
         if next(filter(lambda x: x['name'] == name, orders), None):
@@ -43,13 +47,15 @@ class Order(Resource):
         orders.append(order)
         return order, 201
     
-    @jwt_required
+    # Let us authenticate first before we go to the DELETE request
+    # @jwt_required()
     def delete(self, name):
         global orders
         orders = list(filter(lambda x: x['name'] != name, orders))
         return {'message': 'Order deleted'}
 
-    @jwt_required()
+    # Let us authenticate first before we go to the PUT request
+    # @jwt_required()
     def put(self, name):
         # load data
         data = Order.parser.parse_args()
@@ -68,7 +74,9 @@ class OrderList(Resource):
         return {'orders': orders}
 
 
+# GET, PUT, DELETE
 api.add_resource(Order, '/v1/orders/<string:name>')
+# GET all, POST
 api.add_resource(OrderList, '/v1/orders')
 
 

@@ -11,7 +11,6 @@ users = [
 username_mapping = {us.username: us for us in users}
 
 """Find a user using the id"""
-
 userid_mapping = {us.id: us for us in users}
 
 
