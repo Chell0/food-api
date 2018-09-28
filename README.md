@@ -26,7 +26,7 @@ How to get your development environment running.
 
 ## Running Tests
 
-```cd``` into ```app``` RUN ```python app.py```.
+- ```cd``` into ```app``` RUN ```python app.py```.
 - Click [here](https://documenter.getpostman.com/view/4006766/RWaRPRJm) to test every endpoint:
 
 ```html
