@@ -15,7 +15,6 @@ before_script:
 
 script:
   - python test_app.py
-  - pytest --cov-config .coveragerc test_app.py --pep8 test_app.py --cov-report term-missing
 
 after_script:
   - coverage xml
