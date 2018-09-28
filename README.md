@@ -35,12 +35,10 @@ key: Content-Type value: application/json
 
 ```
 
-```html
-
+```
 GET  http://127.0.0.1:5000/v1/orders/ (get all your orders)
 POST http://127.0.0.1:5000/v1/orders/ (create a new order)
 GET http://127.0.0.1:5000/v1/orders/<name> (get a specific order by name)
 PUT http://127.0.0.1:5000/v1/orders/<name> (update an existing order)
 DELETE http://127.0.0.1:5000/v1/orders/<name> (delete a specific order by name)
-
 ```
