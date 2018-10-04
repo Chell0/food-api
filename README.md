@@ -20,17 +20,15 @@ How to get your development environment running.
 - Clone the repository.
 - Unzip the files to your preferred location.
 - **cd** into the **food-api** folder.
-- Install a virtual environment _pip install virtualenv venv_
-- Install the requirements.txt _pip install -r requierments.txt_
+- Install a virtual environment `pip install virtualenv venv`
+- Install the requirements.txt `pip install -r requierments.txt`
 - Install [Postman](https://www.getpostman.com/).
 
 ## Running Tests
 
 - `cd` into `food-api` RUN `python run.py`.
 
-```html
-key: Content-Type value: application/json
-```
+```key: Content-Type value: application/json```
 
 | Methods | Endpoint                                 | Action                            |
 | ------- | ---------------------------------------- | --------------------------------- |
