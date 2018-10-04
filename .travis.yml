@@ -7,9 +7,10 @@ install:
   - pip install -r requirements.txt
   - pip install coveralls
   
+before_install: cd food-api
 
 script:
-  - python /tests/test_app.py
+  - python food-api/tests/test_app.py
 
 after_script:
   - coverage xml
