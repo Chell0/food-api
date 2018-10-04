@@ -1,35 +1,47 @@
 import unittest
-import os
-import sys 
-
-from app import app
+import requests
+import app
 
 
-
-
-class TestFoodApi(unittest.TestCase):
+class TestApp(unittest.TestCase):
 
     def setUp(self):
-        self.app = self.test_get
-        self.client = self.app.test_client
-    
-    # GET all orders
+        """SetUp"""
+        # self.app = app.OrderList()
+        # self.app = app.Order()
+        pass
+
+    def tearDown(self):
+        """Teardown"""
+        pass
+
     def test_get(self):
-        response = self.client().get('/v1/orders')
-        self.assertEqual(response.status_code, 200)
-
-    
-
-    def test_post(self):
+        """Test the GET all request"""
+        # response = self.app.get('/v1/orders')
+        # print(response.data)
         pass
 
-    def test_delete(self):
+    def test_get(self):
+        """Test to retrieve a single order"""
+        # response = requests.get('/v1/orders/<int:id>')
+        # assert response.text == "Your order was found"
         pass
 
-    def test_put(self):
+    def test_create_order(self):
+        """Test the creation of orders"""
+        # response = self.app.post('/v1/orders')
+        # print(response.data)
         pass
-        
 
+    def test_update_order(self):
+        """Test updating the order status"""
+        # response = self.app.update('/v1/orders/<int:id>')
+        # print(response.data)
+        pass
 
-if __name__ == '__main__':
-    unittest.main()
+    def test_delete_order(self):
+        """Test delete an order by id"""
+        # response = self.app.delete('/v1/orders/<int:id>')
+        # assert isinstance(response.data, object)
+        # print(response.data)
+        pass
