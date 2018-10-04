@@ -5,20 +5,11 @@ python:
 
 install:
   - pip install -r requirements.txt
-  - pip install coveralls
-  
-before_install: cd food-api
 
 script:
   - python food-api/tests/test_app.py
-
-after_script:
-  - coverage xml
-  - if [[ "$TRAVIS_PULL_REQUEST" == "True" && "$TRAVIS_PYTHON_VERSION" == "3.5" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT;
-
-after_success:
   - coveralls
-  - CODECOV_TOKEN="81285440-a3ba-4193-8690-ac91298b2fb5"
+
 
 
 
