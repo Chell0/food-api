@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/Chell0/food-api.svg?branch=develop)](https://travis-ci.org/Chell0/food-api)
 [![Maintainability](https://api.codeclimate.com/v1/badges/46542d1e81b90842b0bf/maintainability)](https://codeclimate.com/github/Chell0/food-api/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/46542d1e81b90842b0bf/test_coverage)](https://codeclimate.com/github/Chell0/food-api/test_coverage)
 
-A simple **REST API** allowing users to _CREATE_ orders. Then, they are able to _READ_, _UPDATE_ and _DELETE_ them.
+A simple **RESTplus API** allowing users to _CREATE_ orders. Then, they are able to **_READ_, _UPDATE_** and **_DELETE_** them.
 
 ## Development SetUp
 
@@ -52,8 +52,8 @@ http://github.com/Chell0/food-api
 
 ## Contributing
 
-1. Fork it (yourname/yourproject/fork)
-2. Create your feature branch (git checkout -b feature/fooBar)
-3. Commit your changes (git commit -am 'Add some fooBar')
-4. Push to the branch (git push origin feature/fooBar)
+1. Fork it `yourname/yourproject/fork`
+2. Create your feature branch `git checkout -b feature/fooBar`
+3. Commit your changes `git commit -am 'Add some fooBar'`
+4. Push to the branch `git push origin feature/fooBar`
 5. Create a new Pull Request
