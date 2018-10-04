@@ -36,9 +36,9 @@ key: Content-Type value: application/json
 | ------- | ---------------------------------------- | --------------------------------- |
 | GET     | http://127.0.0.1:5000/v1/orders          | (get all your orders)             |
 | POST    | http://127.0.0.1:5000/v1/orders          | (create a new order)              |
-| GET     | http://127.0.0.1:5000/v1/orders/<int:id> | (get a specific order by name)    |
-| PUT     | http://127.0.0.1:5000/v1/orders/<int:id> | (update an existing order)        |
-| DELETE  | http://127.0.0.1:5000/v1/orders/<int:id> | (delete a specific order by name) |
+| GET     | http://127.0.0.1:5000/v1/orders/order_id | (get a specific order by name)    |
+| PUT     | http://127.0.0.1:5000/v1/orders/order_id | (update an existing order)        |
+| DELETE  | http://127.0.0.1:5000/v1/orders/order_id | (delete a specific order by name) |
 
 ## Release History
 
