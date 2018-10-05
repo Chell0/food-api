@@ -7,13 +7,4 @@ install:
   - pip install -r requirements.txt
 
 script:
-#   - food-api/tests/test_app.py
-#   - coveralls
-
-
-
-
-
-
-
-
+  - python test_app.py
