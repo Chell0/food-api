@@ -1,6 +1,4 @@
 import unittest
-from run import app 
-
 
 class TestApp(unittest.TestCase):
     """The parent class"""
