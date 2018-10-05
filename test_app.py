@@ -1,5 +1,4 @@
 import unittest
-import requests
 from run import app 
 
 
