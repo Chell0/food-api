@@ -2,14 +2,13 @@ language: python
 
 python:
   - "3.6"
-  - "3.5"
 
 install:
   - pip install -r requirements.txt
 
 script:
 #   - food-api/tests/test_app.py
-  - coveralls
+#   - coveralls
 
 
 
