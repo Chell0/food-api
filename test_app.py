@@ -1,9 +1,10 @@
 import unittest
 import requests
-import app
+from run import app 
 
 
 class TestApp(unittest.TestCase):
+    """The parent class"""
 
     def setUp(self):
         """SetUp"""
@@ -21,7 +22,7 @@ class TestApp(unittest.TestCase):
         # print(response.data)
         pass
 
-    def test_get(self):
+    def test_get_one(self):
         """Test to retrieve a single order"""
         # response = requests.get('/v1/orders/<int:id>')
         # assert response.text == "Your order was found"
