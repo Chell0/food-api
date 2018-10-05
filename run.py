@@ -22,12 +22,14 @@ status = api.model('Status', {
 
 
 class OrderDAO(object):
+    """Parent class"""
     def __init__(self):
         self.count = 0
         self.orders = []
 
     # Get order by id
     def get(self, id):
+        """GET a single order using a single id"""
         for order in self.orders:
             if order['id'] == id:
                 return order
@@ -35,6 +37,7 @@ class OrderDAO(object):
 
     # Create an Order
     def create(self, data):
+        """POST a new order"""
         order = data
         order['id'] = self.count = self.count + 1
         self.orders.append(order)
@@ -42,12 +45,14 @@ class OrderDAO(object):
 
     # Update an order
     def update_order(self, id, status):
+        """Update the status of an existing order"""
         order = self.get(id)
         order.update(status)
         return order
 
     # Delete an order by id
     def delete_order(self, id):
+        """Delete a specific order"""
         order = self.get(id)
         self.orders.remove(order)
 
