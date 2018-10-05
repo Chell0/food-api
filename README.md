@@ -1,7 +1,10 @@
 # Food Service API
 
 [![Build Status](https://travis-ci.org/Chell0/food-api.svg?branch=develop)](https://travis-ci.org/Chell0/food-api)
-[![Maintainability](https://api.codeclimate.com/v1/badges/46542d1e81b90842b0bf/maintainability)](https://codeclimate.com/github/Chell0/food-api/maintainability)[![Coverage Status](https://coveralls.io/repos/github/Chell0/food-api/badge.svg?branch=develop)](https://coveralls.io/github/Chell0/food-api?branch=develop)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/46542d1e81b90842b0bf/maintainability)](https://codeclimate.com/github/Chell0/food-api/maintainability)
+
+[![Coverage Status](https://coveralls.io/repos/github/Chell0/food-api/badge.svg?branch=develop)](https://coveralls.io/github/Chell0/food-api?branch=develop)
 
 A simple **RESTplus API** allowing users to _CREATE_ orders. Then, they are able to **_READ_, _UPDATE_** and **_DELETE_** them.
 
