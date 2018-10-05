@@ -8,8 +8,5 @@ install:
 script:
   - coverage run --source=app -m pytest && coverage report
 
-after_script:
-  - coverage xml
-
 after_success:
   - coveralls
